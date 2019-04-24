@@ -53,7 +53,7 @@ public class ArchivoImp implements Archivo {
 	}
 
 	@Override
-	public ArrayList<Clase> leerClases(TDatos tDatos, HashMap<String,ArrayList<Elemento>> elemento) {
+	public Object leerClases(TDatos tDatos, HashMap<String,ArrayList<Elemento>> elemento) {
 		try {
 			String cadena;
 			FileReader f = new FileReader(tDatos.getArchivoClases());
@@ -70,11 +70,14 @@ public class ArchivoImp implements Archivo {
 				}
 				if(contador < tDatos.getClases().size()) {
 					clase.add(new Clase(elemento.get(tDatos.getClases().get(contador)), tDatos.getClases().get(contador), numeros));
+					contador++;
 				}
 				else {
 					//ERROR, NO COINCIDEN ELEMENTOS DE INICIALIZACION CON NUMERO DE CLASES
+					return -1;
 				}
 			}
+			if(contador != tDatos.getClases().size()) return -2;
 			b.close();
 			return clase;
 		} catch (Exception e) {

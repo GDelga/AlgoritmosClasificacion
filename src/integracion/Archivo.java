@@ -12,5 +12,5 @@ import negocio.TDatos;
  */
 public interface Archivo {
 	public HashMap<String,ArrayList<Elemento>> leerElementos(TDatos tDatos);
-	public ArrayList<Clase> leerClases(TDatos tDatos, HashMap<String,ArrayList<Elemento>> elemento);
+	public Object leerClases(TDatos tDatos, HashMap<String,ArrayList<Elemento>> elemento);
 }
