@@ -6,11 +6,12 @@ import java.util.HashMap;
 import archivo.Clase;
 import archivo.Elemento;
 import negocio.TDatos;
+import negocio.TIntegracion;
 
 /**
  * @author Guillermo Delgado Yepes
  */
 public interface Archivo {
-	public HashMap<String,ArrayList<Elemento>> leerElementos(TDatos tDatos);
+	public TIntegracion leerElementos(TDatos tDatos);
 	public Object leerClases(TDatos tDatos, HashMap<String,ArrayList<Elemento>> elemento);
 }

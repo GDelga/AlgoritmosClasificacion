@@ -8,6 +8,7 @@ import java.util.HashMap;
 import archivo.Clase;
 import archivo.Elemento;
 import negocio.TDatos;
+import negocio.TIntegracion;
 
 /**
  * @author Guillermo Delgado Yepes
@@ -15,13 +16,14 @@ import negocio.TDatos;
 public class ArchivoImp implements Archivo {
 
 	@Override
-	public HashMap<String,ArrayList<Elemento>> leerElementos(TDatos tDatos){
+	public TIntegracion leerElementos(TDatos tDatos){
 		try{
 			String cadena;
 			FileReader f = new FileReader(tDatos.getArchivoDatos());
 			BufferedReader b = new BufferedReader(f);
 			HashMap<String,ArrayList<Elemento>> listaElementos = new HashMap<>();
 			HashMap<String,String> clases = new HashMap<>();
+			ArrayList<ArrayList<Double>> datos = new ArrayList<>();
 			// LEER EL ARCHIVO HASTA EL FINAL DE ARCHIVO
 			while ((cadena = b.readLine()) != null) {
 				// PARSEAR CADA LINEA
@@ -31,6 +33,7 @@ public class ArchivoImp implements Archivo {
 					if (elementData.matches("[0-9]+.+[0-9]+")) { //Si es un numero
 							numeros.add(Double.parseDouble(elementData));
 						} else {
+							datos.add(numeros);
 							if(!clases.containsKey(elementData)){
 								clases.put(elementData, elementData);
 								tDatos.getClases().add(elementData);
@@ -46,7 +49,7 @@ public class ArchivoImp implements Archivo {
 					}
 				}
 				b.close();
-				return listaElementos;
+				return new TIntegracion(listaElementos, datos);
 			} catch (Exception e) {
 				return null;
 			}
