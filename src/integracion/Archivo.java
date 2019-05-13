@@ -14,4 +14,5 @@ import negocio.TIntegracion;
 public interface Archivo {
 	public TIntegracion leerElementos(TDatos tDatos);
 	public Object leerClases(TDatos tDatos, HashMap<String,ArrayList<Elemento>> elemento);
+	ArrayList<Double> leerEjemplo(TDatos tDatos);
 }

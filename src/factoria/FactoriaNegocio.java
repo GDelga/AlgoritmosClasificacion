@@ -1,6 +1,8 @@
 package factoria;
 
+import negocio.BayesImp;
 import negocio.KMediasImp;
+import negocio.LloydImp;
 
 /**
  * @author Guillermo Delgado Yepes
@@ -17,4 +19,8 @@ public abstract class FactoriaNegocio {
 	}
 	
 	public abstract KMediasImp crearKMedias();
+
+	public abstract LloydImp crearLloyd();
+
+	public abstract BayesImp crearBayes();
 }

@@ -9,6 +9,7 @@ public class TDatos {
 
 	private String archivoDatos;
 	private String archivoClases;
+	private String archivoEjemplos;
 	private ArrayList<String> clases;
 	private Tipos tipo;
 
@@ -31,6 +32,14 @@ public class TDatos {
 
 	public void setArchivoClases(String archivoClases) {
 		this.archivoClases = archivoClases;
+	}
+
+	public String getArchivoEjemplos() {
+		return archivoEjemplos;
+	}
+
+	public void setArchivoEjemplos(String archivoEjemplos) {
+		this.archivoEjemplos = archivoEjemplos;
 	}
 
 	public ArrayList<String> getClases() {

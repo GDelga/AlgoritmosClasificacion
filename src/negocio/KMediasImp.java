@@ -21,7 +21,7 @@ public class KMediasImp implements KMedias{
 					matrizU.add(elem.getCentro());
 				}
 				ArrayList<ArrayList<Double>> datos = tIntegracion.getMatrizDatos();
-				this.execute(tDatos, matrizU, datos);
+				this.execute(matrizU, datos);
 			}
 			else if (o == null); //ERROR 1
 			else; //ERROR NUMERO
@@ -29,7 +29,7 @@ public class KMediasImp implements KMedias{
 		}
 	}
 	
-	private ArrayList<ArrayList<Double>> execute(TDatos tDatos, ArrayList<ArrayList<Double>> matrizU, ArrayList<ArrayList<Double>> datos){
+	private ArrayList<ArrayList<Double>> execute(ArrayList<ArrayList<Double>> matrizU, ArrayList<ArrayList<Double>> datos){
 		ArrayList<ArrayList<Double>> pertenencia = null;
 		ArrayList<ArrayList<Double>> matrizAnterior = null;
 		do{

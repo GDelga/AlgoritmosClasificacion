@@ -1,5 +1,5 @@
 package negocio;
 
-public interface Lloyd {
+public interface Bayes {
 	public Object algoritmo(TDatos tDatos);
 }

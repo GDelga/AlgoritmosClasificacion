@@ -87,5 +87,27 @@ public class ArchivoImp implements Archivo {
 			return null;
 		}
 	}
+	
+	@Override
+	public ArrayList<Double> leerEjemplo(TDatos tDatos){
+		try{
+			String cadena;
+			FileReader f = new FileReader(tDatos.getArchivoEjemplos());
+			BufferedReader b = new BufferedReader(f);
+			ArrayList<Double> datos = new ArrayList<>();
+			cadena = b.readLine(); //Solo tiene una linea
+			String op[] = cadena.split(",");
+			for (String elementData : op) {
+				if (elementData.matches("[0-9]+.+[0-9]+")) { //Si es un numero
+					datos.add(Double.parseDouble(elementData));
+				} 
+				else ; //ERROR
+			}
+			b.close();
+			return datos;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 }

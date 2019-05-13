@@ -7,9 +7,10 @@ import archivo.Clase;
 import archivo.Elemento;
 import factoria.FactoriaIntegracion;
 
-public class LLoydImp implements Lloyd{
+public class LloydImp implements Lloyd{
 
-	public void algoritmo(TDatos tDatos) {
+	@Override
+	public Object algoritmo(TDatos tDatos) {
 		TIntegracion tIntegracion = FactoriaIntegracion.getInstance().crearArchivo().leerElementos(tDatos);
 		if(tIntegracion != null) {
 			HashMap<String,ArrayList<Elemento>> elementos = tIntegracion.getListaElementos();
@@ -21,15 +22,52 @@ public class LLoydImp implements Lloyd{
 					matrizU.add(elem.getCentro());
 				}
 				ArrayList<ArrayList<Double>> datos = tIntegracion.getMatrizDatos();
-				this.execute(tDatos, matrizU, datos, clases);
+				this.execute(matrizU, datos, clases);
+				//Modificamos el vector de la clase
+				for(int i = 0; i < clases.size(); ++i) {
+					clases.get(i).setCentro(matrizU.get(i));
+				}
+				//VERIFICAR PUNTO
+				//1º leer archivo de ejemplo
+				ArrayList<Double> ejemplo = FactoriaIntegracion.getInstance().crearArchivo().leerEjemplo(tDatos);
+				//crearVectores
+				String p = pertenencia(clases, ejemplo);
+				String sol = "El vector (";
+				for(int i = 0; i < ejemplo.size(); ++i) {
+					sol += " " + ejemplo.get(i);
+					if(i + 1 < ejemplo.size()) sol += ",";
+				}
+				sol += ") pertenece a la clase " + p;
+				return sol;
 			}
-			else if (o == null); //ERROR 1
-			else; //ERROR NUMERO
-			
+			else if (o == null) return null;//ERROR 1
+			else return o; //ERROR NUMERO
 		}
+		else return null;
 	}
 
-	private void execute(TDatos tDatos, ArrayList<ArrayList<Double>> matrizU, ArrayList<ArrayList<Double>> datos, ArrayList<Clase> clases) {
+	private String pertenencia(ArrayList<Clase> clases, ArrayList<Double> ejemplo) {
+		double minimo, aux;
+		int centroMin = 0;
+		for(int i = 0; i < clases.size(); ++i) {
+			minimo = 0.0;
+			aux = 0.0;
+			if(i == 0) {
+				minimo = distancia(ejemplo, clases.get(i).getCentro());
+				centroMin = i;
+			}
+			else {
+				aux = distancia(ejemplo, clases.get(i).getCentro());
+				if(aux < minimo) {
+					minimo = aux;
+					centroMin = i;
+				}
+			}
+		}
+		return clases.get(centroMin).getNombre();
+	}
+
+	private void execute(ArrayList<ArrayList<Double>> matrizU, ArrayList<ArrayList<Double>> datos, ArrayList<Clase> clases) {
 		double minimo, aux;
 		int centroMin = 0 , iteraciones = 0;
 		ArrayList<ArrayList<Double>> centrosOriginales = (ArrayList<ArrayList<Double>>) matrizU.clone();

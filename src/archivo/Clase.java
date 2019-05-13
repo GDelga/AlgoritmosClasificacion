@@ -10,6 +10,7 @@ public class Clase {
 	private String nombre;
 	private double[][] matriz;
 	private ArrayList<Double> centro;
+	private double[][] matrizBayes;
 
 	
 	public Clase(ArrayList<Elemento> elementos, String nombre, ArrayList<Double> ds){		
@@ -52,5 +53,15 @@ public class Clase {
 	public void setMatriz(double[][] matriz) {
 		this.matriz = matriz;
 	}
+
+	public double[][] getMatrizBayes() {
+		return matrizBayes;
+	}
+
+	public void setMatrizBayes(double[][] matrizBayes) {
+		this.matrizBayes = matrizBayes;
+	}
+	
+	
 
 }
