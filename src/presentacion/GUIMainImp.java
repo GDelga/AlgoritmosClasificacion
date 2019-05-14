@@ -312,8 +312,24 @@ public class GUIMainImp extends GUIMain {
 				int res = (int) contexto.getDato();
 				switch(res){
 				case(-1):
+					JLabel label4 = new JLabel("<html><body>Hay más vectores de inicializaciñon que clases</body></html>");
+					label4.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label4, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
 				break;
 				case(-2):
+					JLabel label5 = new JLabel("<html><body>Hay menos vectores de inicializaciñon que clases</body></html>");
+					label5.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label5, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-3):
+					JLabel label6 = new JLabel("<html><body>Los vectores de inicializacion no contienen numeros</body></html>");
+					label6.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label6, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-4):
+					JLabel label7 = new JLabel("<html><body>Los vectores de test no contienen numeros</body></html>");
+					label7.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label7, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
 				break;
 				}
 			}
@@ -333,8 +349,61 @@ public class GUIMainImp extends GUIMain {
 				int res = (int) contexto.getDato();
 				switch(res){
 				case(-1):
+					JLabel label4 = new JLabel("<html><body>Hay más vectores de inicializaciñon que clases</body></html>");
+					label4.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label4, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
 				break;
 				case(-2):
+					JLabel label5 = new JLabel("<html><body>Hay menos vectores de inicializaciñon que clases</body></html>");
+					label5.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label5, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-3):
+					JLabel label6 = new JLabel("<html><body>Los vectores de inicializacion no contienen numeros</body></html>");
+					label6.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label6, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-4):
+					JLabel label7 = new JLabel("<html><body>Los vectores de test no contienen numeros</body></html>");
+					label7.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label7, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				}
+			}
+		break;
+		case(Events.KMEDIAS_OK):
+			JLabel label5 = new JLabel((String)contexto.getDato());
+			label5.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+			JOptionPane.showMessageDialog(null, label5, "¡Resultado!", JOptionPane.INFORMATION_MESSAGE);
+		break;
+		case(Events.KMEDIAS_KO):
+			if(contexto.getDato() == null) {
+				JLabel label6 = new JLabel("<html><body>No se han podido cargar los archivos</body></html>");
+				label6.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+				JOptionPane.showMessageDialog(null, label6, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+			}
+			else {
+				int res = (int) contexto.getDato();
+				switch(res){
+				case(-1):
+					JLabel label4 = new JLabel("<html><body>Hay más vectores de inicializaciñon que clases</body></html>");
+					label4.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label4, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-2):
+					JLabel label8 = new JLabel("<html><body>Hay menos vectores de inicializaciñon que clases</body></html>");
+					label8.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label8, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-3):
+					JLabel label6 = new JLabel("<html><body>Los vectores de inicializacion no contienen numeros</body></html>");
+					label6.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label6, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
+				break;
+				case(-4):
+					JLabel label7 = new JLabel("<html><body>Los vectores de test no contienen numeros</body></html>");
+					label7.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 25));
+					JOptionPane.showMessageDialog(null, label7, "¡Aviso!", JOptionPane.INFORMATION_MESSAGE);
 				break;
 				}
 			}

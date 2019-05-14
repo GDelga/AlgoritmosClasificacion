@@ -15,27 +15,29 @@ public class BayesImp implements Bayes {
 		if(tIntegracion != null) {
 			HashMap<String,ArrayList<Elemento>> elementos = tIntegracion.getListaElementos();
 			Object o = FactoriaIntegracion.getInstance().crearArchivo().leerClases(tDatos, elementos);
-			if (o instanceof ArrayList) {
+			if (o != null && o instanceof ArrayList) {
 				ArrayList<Clase> clases = (ArrayList<Clase>) o;
 				this.execute(clases);				
 				//VERIFICAR PUNTO
 				//1º leer archivo de ejemplo
-				ArrayList<Double> ejemplo = FactoriaIntegracion.getInstance().crearArchivo().leerEjemplo(tDatos);
-				//crearVectores
-				String p = pertenencia(clases, ejemplo);
-				String sol = "El vector (";
-				for(int i = 0; i < ejemplo.size(); ++i) {
-					sol += " " + ejemplo.get(i);
-					if(i + 1 < ejemplo.size()) sol += ",";
+				Object o1 = FactoriaIntegracion.getInstance().crearArchivo().leerEjemplo(tDatos);
+				if (o1 != null && o1 instanceof ArrayList) {
+					ArrayList<Double> ejemplo = (ArrayList<Double>) o1;
+					//crearVectores
+					String p = pertenencia(clases, ejemplo);
+					String sol = "El vector (";
+					for(int i = 0; i < ejemplo.size(); ++i) {
+						sol += " " + ejemplo.get(i);
+						if(i + 1 < ejemplo.size()) sol += ",";
+					}
+					sol += ") pertenece a la clase " + p;
+					return sol;
 				}
-				sol += ") pertenece a la clase " + p;
-				return sol;
+				else return o1; //ERROR
 			}
-			else if (o == null) return null;//ERROR 1
-			else return o; //ERROR NUMERO
-			
+			else return o; //ERROR
 		}
-		else return null;
+		else return null; //ERROR
 	}
 
 	private String pertenencia(ArrayList<Clase> clases, ArrayList<Double> ejemplo) {

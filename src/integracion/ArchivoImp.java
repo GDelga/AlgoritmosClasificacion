@@ -70,19 +70,22 @@ public class ArchivoImp implements Archivo {
 				// PARSEAR CADA LINEA
 				ArrayList<Double> numeros = new ArrayList<Double>();
 				String op[] = cadena.split(",");
-				for (String elementData : op) {	
-					numeros.add(Double.parseDouble(elementData));
+				for (String elementData : op) {
+					if (elementData.matches("[0-9]+.+[0-9]+")) { //Si es un numero
+						numeros.add(Double.parseDouble(elementData));
+					} 
+					else return -3; //ERROR
 				}
 				if(contador < tDatos.getClases().size()) {
 					clase.add(new Clase(elemento.get(tDatos.getClases().get(contador)), tDatos.getClases().get(contador), numeros));
 					contador++;
 				}
 				else {
-					//ERROR, NO COINCIDEN ELEMENTOS DE INICIALIZACION CON NUMERO DE CLASES
+					//ERROR, NO COINCIDEN ELEMENTOS DE INICIALIZACION CON NUMERO DE CLASES + INICIALIZACION QUE CLASES
 					return -1;
 				}
 			}
-			if(contador != tDatos.getClases().size()) return -2;
+			if(contador != tDatos.getClases().size()) return -2; //ERROR, NO COINCIDEN ELEMENTOS DE INICIALIZACION CON NUMERO DE CLASES - INICIALIZACION QUE CLASES
 			b.close();
 			return clase;
 		} catch (Exception e) {
@@ -91,7 +94,7 @@ public class ArchivoImp implements Archivo {
 	}
 	
 	@Override
-	public ArrayList<Double> leerEjemplo(TDatos tDatos){
+	public Object leerEjemplo(TDatos tDatos){
 		try{
 			String cadena;
 			FileReader f = new FileReader(tDatos.getArchivoEjemplos());
@@ -103,7 +106,7 @@ public class ArchivoImp implements Archivo {
 				if (elementData.matches("[0-9]+.+[0-9]+")) { //Si es un numero
 					datos.add(Double.parseDouble(elementData));
 				} 
-				else ; //ERROR
+				//else return -4; //ERROR
 			}
 			b.close();
 			return datos;
