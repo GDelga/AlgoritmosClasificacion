@@ -99,6 +99,7 @@ public class LloydImp implements Lloyd{
 		boolean encontrado = false;
 		while(i < matrizU.size() && !encontrado) {
 			if (distancia(matrizU.get(i), centrosOriginales.get(i)) > Constantes.toleranciaL) encontrado = true;
+			++i;
 		}
 		return encontrado;
 	}

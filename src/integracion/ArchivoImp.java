@@ -24,6 +24,7 @@ public class ArchivoImp implements Archivo {
 			HashMap<String,ArrayList<Elemento>> listaElementos = new HashMap<>();
 			HashMap<String,String> clases = new HashMap<>();
 			ArrayList<ArrayList<Double>> datos = new ArrayList<>();
+			ArrayList<String> nombreClases = new ArrayList<>();
 			// LEER EL ARCHIVO HASTA EL FINAL DE ARCHIVO
 			while ((cadena = b.readLine()) != null) {
 				// PARSEAR CADA LINEA
@@ -36,7 +37,7 @@ public class ArchivoImp implements Archivo {
 							datos.add(numeros);
 							if(!clases.containsKey(elementData)){
 								clases.put(elementData, elementData);
-								tDatos.getClases().add(elementData);
+								nombreClases.add(elementData);
 							}
 							Elemento elem= new Elemento(numeros, elementData);
 							if(listaElementos.containsKey(elementData)){
@@ -48,11 +49,12 @@ public class ArchivoImp implements Archivo {
 						}
 					}
 				}
-				b.close();
-				return new TIntegracion(listaElementos, datos);
-			} catch (Exception e) {
-				return null;
-			}
+			tDatos.setClases(nombreClases);
+			b.close();
+			return new TIntegracion(listaElementos, datos);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override

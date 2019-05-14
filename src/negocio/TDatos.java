@@ -11,11 +11,11 @@ public class TDatos {
 	private String archivoClases;
 	private String archivoEjemplos;
 	private ArrayList<String> clases;
-	private Tipos tipo;
 
-	public TDatos(String a1, String a2) {
+	public TDatos(String a1, String a2, String a3) {
 		this.archivoDatos = a1;
 		this.archivoClases = a2;
+		this.archivoEjemplos = a3;
 	}
 
 	public String getArchivoDatos() {
@@ -50,11 +50,4 @@ public class TDatos {
 		this.clases = clases;
 	}
 
-	public Tipos getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Tipos tipo) {
-		this.tipo = tipo;
-	}
 }

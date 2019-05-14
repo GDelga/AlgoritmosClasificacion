@@ -16,13 +16,22 @@ public class DispatcherImp extends Dispatcher {
 		case(Events.GUI_MAIN):
 			GUIMain.getInstance().actualizar(contexto);
 		break;
-		case(Events.BAYES):
+		case(Events.LLOYD_KO):
 			GUIMain.getInstance().actualizar(contexto);
 		break;
-		case(Events.KMEDIAS):
+		case(Events.LLOYD_OK):
 			GUIMain.getInstance().actualizar(contexto);
 		break;
-		case(Events.LLOYD):
+		case(Events.BAYES_KO):
+			GUIMain.getInstance().actualizar(contexto);
+		break;
+		case(Events.BAYES_OK):
+			GUIMain.getInstance().actualizar(contexto);
+		break;
+		case(Events.KMEDIAS_KO):
+			GUIMain.getInstance().actualizar(contexto);
+		break;
+		case(Events.KMEDIAS_OK):
 			GUIMain.getInstance().actualizar(contexto);
 		break;
 		}

@@ -85,8 +85,8 @@ public class BayesImp implements Bayes {
 		
 		double[][] anterior = null;
 		for(int i = 0; i < clases.size(); ++i) {
-			for(int j = 0; j < clases.get(i).getMatriz().length; ++i) {
-				calcularMatriz(clases.get(i).getMatriz()[j], clases.get(i).getCentro(), anterior);
+			for(int j = 0; j < clases.get(i).getMatriz().length; ++j) {
+				anterior = calcularMatriz(clases.get(i).getMatriz()[j], clases.get(i).getCentro(), anterior);
 			}
 			multiplicarMatriz(anterior, clases.get(i).getMatriz().length);
 			clases.get(i).setMatrizBayes(anterior);
@@ -101,7 +101,7 @@ public class BayesImp implements Bayes {
 		}
 	}
 
-	private void calcularMatriz(double[] ds, ArrayList<Double> centro, double[][] anterior) {
+	private double[][] calcularMatriz(double[] ds, ArrayList<Double> centro, double[][] anterior) {
 		if(anterior == null) {
 			anterior = new double[centro.size()][centro.size()];
 			for(int i = 0; i < centro.size(); ++i) {
@@ -125,6 +125,7 @@ public class BayesImp implements Bayes {
 				anterior[i][j] += m[i][j];
 			}
 		}
+		return anterior;
 	}
 	
 }
