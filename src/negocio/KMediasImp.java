@@ -49,10 +49,9 @@ public class KMediasImp implements KMedias{
 	}
 	
 	public String pertenencia(ArrayList<Clase> clases, ArrayList<Double> ejemplo){
-		double minimo, aux;
+		double minimo = 0.0, aux;
 		int centroMin = 0;
 		for(int i = 0; i < clases.size(); ++i) {
-			minimo = 0.0;
 			aux = 0.0;
 			if(i == 0) {
 				minimo = distanciaEntre(ejemplo, clases.get(i).getCentro());

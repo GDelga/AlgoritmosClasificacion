@@ -50,10 +50,9 @@ public class LloydImp implements Lloyd{
 	}
 
 	private String pertenencia(ArrayList<Clase> clases, ArrayList<Double> ejemplo) {
-		double minimo, aux;
+		double minimo = 0.0, aux;
 		int centroMin = 0;
 		for(int i = 0; i < clases.size(); ++i) {
-			minimo = 0.0;
 			aux = 0.0;
 			if(i == 0) {
 				minimo = distancia(ejemplo, clases.get(i).getCentro());

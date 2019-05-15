@@ -44,7 +44,7 @@ public class BayesImp implements Bayes {
 		int claseMinima = 0;
 		double suma, min = 0.0;
 		boolean primero = true;
-		double[][] vectoresClases = new double[ejemplo.size()][ejemplo.size()];
+		/*double[][] vectoresClases = new double[ejemplo.size()][ejemplo.size()];
 		//Crear vectores
 		for(int i = 0; i < clases.size(); ++i) { //Clase
 			for(int j = 0; j < clases.get(i).getMatrizBayes().length; ++j) { //Fila
@@ -54,13 +54,13 @@ public class BayesImp implements Bayes {
 				}
 				vectoresClases[i][j] = suma / clases.get(i).getMatrizBayes().length;
 			}
-		}
+		}*/
 		
 		//Resta del ejemplo con el vector y multiplicacion
 		for(int i = 0; i < clases.size(); ++i) {
 			ArrayList<Double> resta = new ArrayList<>();
-			for(int j = 0; j < vectoresClases[i].length; ++j) { //Columnas
-				resta.add(ejemplo.get(j) - vectoresClases[i][j]);
+			for(int j = 0; j < clases.get(i).getCentro().size(); ++j) { //Columnas
+				resta.add(ejemplo.get(j) - clases.get(i).getCentro().get(j));
 			}
 			double res = multiplicar(resta);
 			if(primero) {
